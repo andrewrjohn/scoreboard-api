@@ -1,4 +1,4 @@
-import { TScore } from "./interfaces/events";
+import { TScore } from "../interfaces/events";
 
 const express = require("express");
 const cheerio = require("cheerio");
