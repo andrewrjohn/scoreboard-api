@@ -1,6 +1,12 @@
 ## MLB Scores API (via ESPN)
 Express.js API that scrapes ESPN for MLB scores, in TypeScript.
 
+### Usage
+1. Pull code
+2. ```yarn start```
+3. Wait a few seconds, then hit http://localhost:3000/api/v1/sports/baseball/mlb/events
+4. 🎉
+
 ### URL Used for Scraping
 https://www.espn.com/mlb/scoreboard
 
