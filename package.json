@@ -9,7 +9,8 @@
     "node-fetch": "^2.6.0"
   },
   "scripts": {
-    "start": "nodemon app.ts"
+    "start": "ts-node app.ts",
+    "dev": "nodemon app.ts"
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.13",
