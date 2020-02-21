@@ -1,4 +1,4 @@
-export {};
+export { };
 const cheerio = require("cheerio");
 const fetch = require("node-fetch");
 const redis = require("redis");
@@ -32,7 +32,7 @@ export async function fetchData(url: string, key: string) {
         .trim();
 
     const data = JSON.parse(strippedData);
-            // console.log(object)
+
     const { events } = data;
 
     let scores = [];
