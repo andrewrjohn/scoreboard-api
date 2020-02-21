@@ -11,7 +11,7 @@
     "tslint": "^6.0.0"
   },
   "scripts": {
-    "start": "ts-node src/server.ts",
+    "start": "node src/server.ts",
     "dev": "nodemon src/server.ts"
   },
   "devDependencies": {
