@@ -1,0 +1,14 @@
+{
+    "version": 2,
+    "builds": [{
+        "src": "src/index.ts",
+        "use": "@now/node-server"
+    }],
+    "routes": [{
+        "src": "/.*",
+        "dest": "src/index.ts"
+    }],
+    "env": {
+        "NODE_ENV": "production"
+    }
+}

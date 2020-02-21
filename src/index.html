@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard API</title>
+</head>
+
+<body>
+    <h1>Scoreboard API</h1>
+    <h3>Available Sports:</h3>
+    <ul>
+    </ul>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        ul {
+            margin-top: 0;
+            /* list-style-type: none; */
+        }
+
+        h3 {
+            margin-bottom: 0;
+        }
+
+        li:first-of-type {
+            margin-top: 15px;
+        }
+
+        li {
+            margin-top: 23px;
+        }
+
+        a {
+            color: orange;
+        }
+    </style>
+    <script>
+        const ul = document.querySelector("ul")
+
+        const sports = [
+            "mlb",
+            "nba",
+            "nfl",
+            "ncaam",
+            "ncaaf"
+        ];
+
+        sports.map((sport) => {
+
+            const aElement = document.createElement("a")
+            const liElement = document.createElement("li")
+
+            const href = `${window.location.origin}/api/v1/sports/${sport}/events`
+            aElement.href = href
+            aElement.text = href
+            const span = document.createElement('span')
+            span.innerText = sport.toUpperCase() + ": "
+            liElement.appendChild(span)
+            liElement.appendChild(aElement)
+            ul.appendChild(liElement)
+        })
+    </script>
+</body>
+
+</html>

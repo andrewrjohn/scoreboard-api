@@ -1,18 +1,17 @@
 {
-  "name": "baseballscraper",
+  "name": "scoreboard",
   "version": "1.0.0",
-  "main": "src/server.ts",
+  "main": "src/index.ts",
   "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
     "node-fetch": "^2.6.0",
-    "redis": "^3.0.2",
     "tslint": "^6.0.0"
   },
   "scripts": {
-    "start": "node src/server.ts",
-    "dev": "nodemon src/server.ts"
+    "start": "node src/index.ts",
+    "dev": "nodemon src/index.ts"
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.13",
@@ -28,6 +27,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "nodemon": "^1.19.1",
     "ts-node": "^8.3.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.8.2"
   }
 }
