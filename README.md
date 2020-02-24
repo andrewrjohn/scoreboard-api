@@ -2,7 +2,7 @@
 Express.js API that scrapes ESPN for sports scores, with TypeScript.
 
 ### Usage
-https://scoreboard-api.now.sh/
+https://score-board-api.herokuapp.com/
 
 ### Run Locally
 1. Pull code
