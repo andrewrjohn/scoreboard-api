@@ -2,7 +2,7 @@ const express = require("express");
 const scoreboardRoute = require("./routes/scoreboard");
 
 const app = express();
-const port = process.env.NODE_ENV === "production" ? 443 : 3000;
+const port = process.env.PORT || 3000;
 
 app.use("/api/v1/sports", [scoreboardRoute]);
 
