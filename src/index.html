@@ -4,66 +4,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scoreboard API</title>
+    <title>Endpoint Reference</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 
 <body>
-    <h1>Scoreboard API</h1>
-    <h3>Available Sports:</h3>
+    <h4 class="text-center my-3">Endpoint Reference</h4>
+    <table class="table table-striped endpoint-table mx-auto border">
+        <thead>
+            <tr>
+                <th>Method</th>
+                <th>Sport</th>
+                <th>Endpoint</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <span class="badge badge-primary">GET</span>
+                </td>
+                <td class="text-dark font-weight-bold">MLB</td>
+                <td><a class="text-dark" href="/api/v1/sports/mlb/events"><u>/api/v1/sports/mlb/events</u></a></td>
+                <td class="text-muted"></td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge badge-primary">GET</span>
+                </td>
+                <td class="text-dark font-weight-bold">NFL</td>
+                <td><a class="text-dark" href="/api/v1/sports/nfl/events"><u>/api/v1/sports/nfl/events</u></a></td>
+                <td class="text-muted"></td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge badge-primary">GET</span>
+                </td>
+                <td class="text-dark font-weight-bold">NBA</td>
+                <td><a class="text-dark" href="/api/v1/sports/nba/events"><u>/api/v1/sports/nba/events</u></a></td>
+                <td class="text-muted"></td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge badge-primary">GET</span>
+                </td>
+                <td class="text-dark font-weight-bold">NCAAM</td>
+                <td><a class="text-dark" href="/api/v1/sports/ncaam/events"><u>/api/v1/sports/ncaam/events</u></a>
+                </td>
+                <td class="text-muted">Men's college basketball, top 25 teams only.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="badge badge-primary">GET</span>
+                </td>
+                <td class="text-dark font-weight-bold">NCAAF</td>
+                <td><a class="text-dark" href="/api/v1/sports/ncaaf/events"><u>/api/v1/sports/ncaaf/events</u></a>
+                </td>
+                <td class="text-muted">Men's college football, top 25 teams only.</td>
+            </tr>
+        </tbody>
+    </table>
     <ul>
     </ul>
     <style>
-        body {
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        .endpoint-table {
+            max-width: 900px;
         }
 
-        ul {
-            margin-top: 0;
-            /* list-style-type: none; */
-        }
-
-        h3 {
-            margin-bottom: 0;
-        }
-
-        li:first-of-type {
-            margin-top: 15px;
-        }
-
-        li {
-            margin-top: 23px;
-        }
-
-        a {
-            color: orange;
+        .badge {
+            font-size: 14px;
         }
     </style>
-    <script>
-        const ul = document.querySelector("ul")
-
-        const sports = [
-            "mlb",
-            "nba",
-            "nfl",
-            "ncaam",
-            "ncaaf"
-        ];
-
-        sports.map((sport) => {
-
-            const aElement = document.createElement("a")
-            const liElement = document.createElement("li")
-
-            const href = `${window.location.origin}/api/v1/sports/${sport}/events`
-            aElement.href = href
-            aElement.text = href
-            const span = document.createElement('span')
-            span.innerText = sport.toUpperCase() + ": "
-            liElement.appendChild(span)
-            liElement.appendChild(aElement)
-            ul.appendChild(liElement)
-        })
-    </script>
 </body>
 
 </html>
