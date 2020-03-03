@@ -1,3 +1,4 @@
+export {};
 const express = require("express");
 const scoreboardRoute = require("./routes/scoreboard");
 

@@ -1,13 +1,7 @@
 export { };
 const { fetchData } = require("../utils/fetchData");
-const { SPORTS, SPORT_URL_MAP, getSportURL } = require("../constants/urls");
+const { SPORTS, SPORT_URL_MAP, getSportURL } = require("../constants/sports");
 const express = require("express");
-// const redis = require("redis");
-// const { promisify } = require("util");
-
-// const client = redis.createClient();
-
-// const getAsync = promisify(client.get).bind(client);
 
 const router = express.Router();
 
@@ -16,9 +10,9 @@ const scores = {};
 const seconds = (n) => 1000 * n;
 
 function startSchedule() {
-  SPORTS.map((sport) => {
+  SPORTS.map(async (sport) => {
     const url = getSportURL(sport);
-    scores[sport] = fetchData(url, sport);
+    scores[sport] = await fetchData(url, sport);
     setInterval(async () => {
       scores[sport] = await fetchData(url, sport);
     }, seconds(30));

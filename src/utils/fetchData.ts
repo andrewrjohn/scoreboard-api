@@ -1,9 +1,6 @@
 export { };
 const cheerio = require("cheerio");
 const fetch = require("node-fetch");
-// const redis = require("redis");
-
-// const client = redis.createClient();
 
 export async function fetchData(url: string, key: string) {
     console.log(`[FETCHING] ${key}...`);
@@ -76,7 +73,6 @@ export async function fetchData(url: string, key: string) {
                 }
             }
         ];
-        // client.set(key, JSON.stringify(scores));
     });
     console.log(`[UPDATED] ${key}`);
     return scores;
