@@ -10,7 +10,8 @@
     "tslint": "^6.0.0"
   },
   "scripts": {
-    "start": "tsc src/index.ts",
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
     "dev": "nodemon src/index.ts"
   },
   "devDependencies": {
