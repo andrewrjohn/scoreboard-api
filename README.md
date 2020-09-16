@@ -1,6 +1,9 @@
 ## Scoreboard API (via ESPN)
 Express.js API that scrapes ESPN for sports scores, with TypeScript.
 
+### React
+For easier usage within React, check out the [React Sports Hooks](https://github.com/andrewrjohn/react-sports-hooks) package that makes it easier to get scores and doesn't depend on any API under the hood. It's based off the same code, but it takes the reliance off of hosting the API yourself.
+
 ### Usage
 https://score-board-api.herokuapp.com/
 
