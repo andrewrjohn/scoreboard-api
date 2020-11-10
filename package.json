@@ -13,7 +13,8 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "start:production": "npm run build && pm2 start public -n scoreboard-api"
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.13",
