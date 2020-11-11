@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "ts-node src/index.ts",
-    "build": "tsc",
+    "build": "tsc && cp src/index.html public",
     "dev": "nodemon src/index.ts",
     "start:production": "npm run build && pm2 start public -n scoreboard-api"
   },
