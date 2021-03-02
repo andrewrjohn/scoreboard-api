@@ -1,9 +1,16 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'node'
+    }
+
+  }
   stages {
-    stage('pull from github') {
+    stage('do the stuff') {
       steps {
-        sh 'echo \'test\''
+        sh 'npm install'
+        sh 'npm run build'
+        sh 'npm start'
       }
     }
 
