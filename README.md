@@ -1,70 +1,131 @@
-## Scoreboard API (via ESPN)
-Express.js API that scrapes ESPN for sports scores, with TypeScript.
 
-### React
-For easier usage within React, check out the [React Sports Hooks](https://github.com/andrewrjohn/react-sports-hooks) package that makes it easier to get scores and doesn't depend on any API under the hood. It's based off the same code, but it takes the reliance off of hosting the API yourself.
+# Scoreboard API
 
-### Usage
-https://scores.weaklytyped.com/
+Express.js API that scrapes ESPN for sports scores, written with TypeScript, updated every 30 seconds ⚡️
 
-### Run Locally
-1. Pull code
-2. ```yarn start```
-3. Wait a few seconds, then hit http://localhost:3000/api/v1/sports/:sport_name/events
-4. 🎉
 
-### Supported Sports
-- "mlb"
-- "nba"
-- "ncaam" (Men's College Basketball, only Top 25 Teams)
-- "ncaaf" (Men's College Football)
-- "nfl"
+## Demo
 
-### [Video walkthrough of the project](https://youtu.be/lgdMD0FAflI)
+https://scores.weaklytyped.com
 
-### Example Response
+  
+## Features
+Currently these are the supported sports:
+- MLB
+- NBA
+- NFL
+- NCAAM (top 25 men's college basketball)
+- NCAAF (top 25 men's college football)
+
+  
+## API Reference
+View the [endpoint reference here](https://scores.weaklytyped.com/) to see all available endpoints
+
+
+  
+## Example
+
 ```javascript
+GET https://scores.weaklytyped.com/api/v1/sports/mlb/events
+
+
 {
-  "date": "2019-08-23T21:52:02.370Z",
-  "scores": [
-    {
-      "startTime": "2019-08-23T18:20Z",
-      "shortName": "WSH @ CHC",
-      "status": {
-        "inning": 9,
-        "state": "post",
-        "detail": "Final",
-        "shortDetail": "Final",
-        "completed": true
+   "date":"2021-08-27T17:51:31.808Z",
+   "scores":[
+      {
+         "startTime":"2021-08-27T23:05Z",
+         "shortName":"ARI @ PHI",
+         "status":{
+            "inning":1,
+            "state":"pre",
+            "detail":"Fri, August 27th at 7:05 PM EDT",
+            "shortDetail":"8/27 - 7:05 PM EDT",
+            "completed":false
+         },
+         "teams":{
+            "awayTeam":{
+               "shortDisplayName":"Diamondbacks",
+               "alternateColor":"000000",
+               "color":"a40013",
+               "displayName":"Arizona Diamondbacks",
+               "name":"Diamondbacks",
+               "logo":"https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/ari.png",
+               "location":"Arizona",
+               "abbreviation":"ARI",
+               "isActive":true,
+               "score":"0"
+            },
+            "homeTeam":{
+               "shortDisplayName":"Phillies",
+               "alternateColor":"284898",
+               "color":"be0011",
+               "displayName":"Philadelphia Phillies",
+               "name":"Phillies",
+               "logo":"https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/phi.png",
+               "location":"Philadelphia",
+               "abbreviation":"PHI",
+               "isActive":true,
+               "score":"0"
+            }
+         }
       },
-      "teams": {
-        "awayTeam": {
-          "shortDisplayName": "Nationals",
-          "alternateColor": "f1f2f3",
-          "color": "0a295d",
-          "displayName": "Washington Nationals",
-          "name": "Nationals",
-          "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/wsh.png",
-          "location": "Washington",
-          "abbreviation": "WSH",
-          "isActive": true,
-          "score": "9"
-        },
-        "homeTeam": {
-          "shortDisplayName": "Cubs",
-          "alternateColor": "00417d",
-          "color": "00417d",
-          "displayName": "Chicago Cubs",
-          "name": "Cubs",
-          "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/chc.png",
-          "location": "Chicago",
-          "abbreviation": "CHC",
-          "isActive": true,
-          "score": "3"
-        }
-      }
-    },
-    ...rest of the games
-  ]
+      ...
+   ]
 }
 ```
+
+  
+## Run Locally
+
+Clone the project
+
+```sh
+  # Using NPM
+  git clone https://github.com/andrewrjohn/scoreboard-api.git
+
+  # Using yarn
+  git clone git@github.com:andrewrjohn/scoreboard-api.git
+```
+
+Go to the project directory
+
+```sh
+  cd scoreboard-api
+```
+
+Install dependencies
+
+```sh
+  # Using NPM
+  npm install
+
+  # Using Yarn
+  yarn install
+```
+
+Start the server
+
+```sh
+  # Using NPM
+  npm run start
+
+  # Using Yarn
+  yarn start
+```
+
+  
+## Client Wrappers
+
+Use the following libraries if you want an easy way to consume this API in your frontend apps:
+
+- [React Sports Hooks](https://github.com/andrewrjohn/react-sports-hooks)
+
+  
+## Feedback
+
+If you have any feedback, please [create an issue](https://github.com/andrewrjohn/scoreboard-api/issues/new)
+
+  
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
