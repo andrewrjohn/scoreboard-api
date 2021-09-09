@@ -26,7 +26,7 @@ View the [endpoint reference here](https://scores.weaklytyped.com/) to see all a
 ## Example
 
 ```javascript
-GET https://scores.weaklytyped.com/api/v1/sports/mlb/events
+# GET https://scores.weaklytyped.com/api/v1/sports/mlb/events
 
 
 {
@@ -80,10 +80,10 @@ GET https://scores.weaklytyped.com/api/v1/sports/mlb/events
 Clone the project
 
 ```sh
-  # Using NPM
+  # Using HTTPS
   git clone https://github.com/andrewrjohn/scoreboard-api.git
 
-  # Using yarn
+  # Using SSH
   git clone git@github.com:andrewrjohn/scoreboard-api.git
 ```
 
