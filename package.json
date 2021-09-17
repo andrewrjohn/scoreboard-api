@@ -14,7 +14,7 @@
     "start": "ts-node src/index.ts",
     "build": "tsc && yarn tailwind",
     "dev": "NODE_ENV=development concurrently \"yarn tailwind:watch\" \"nodemon src/index.ts\"",
-    "start:production": "npm run build && pm2 start public -n scoreboard-api",
+    "start:production": "npm run build && pm2 start -n scoreboard-api",
     "tailwind": "tailwindcss -o public/styles/styles.css",
     "tailwind:watch": "tailwindcss -o public/styles/styles.css --watch"
   },
