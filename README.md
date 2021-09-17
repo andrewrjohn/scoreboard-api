@@ -125,6 +125,9 @@ Use the following libraries if you want an easy way to consume this API in your 
 
 If you have any feedback, please [create an issue](https://github.com/andrewrjohn/scoreboard-api/issues/new)
 
+## Support this Project
+Find yourself using this API, or just think this is cool and want to see continued development of it? Please consider <a href="https://buy.stripe.com/28o2a2fPyens2Qg288" target="_blank">supporting Weakly Typed</a> to help keep this project alive ✊
+
   
 ## License
 
