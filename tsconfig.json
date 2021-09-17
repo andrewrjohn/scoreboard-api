@@ -2,14 +2,13 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "outDir": "./public",
+    "outDir": "./dist",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "allowJs": true,
     "skipLibCheck": true,
     "lib": ["dom", "dom.iterable", "esnext"]
