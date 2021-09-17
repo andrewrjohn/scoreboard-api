@@ -9,8 +9,12 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 app.use(analytics);
-app.use(express.static("public"));
+app.use("/styles", express.static("public/styles"));
 app.use("/api/v1/sports", [scoreboardRoute]);
+
+app.get("/", (_, res) => {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
+});
 
 app.listen(port, () => {
   console.log(`Server running at http://127.0.0.1:${port}`);

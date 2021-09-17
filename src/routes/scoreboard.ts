@@ -42,13 +42,13 @@ router.get("/:sport/events", (req, res) => {
   startSchedule();
   const { sport } = req.params;
 
-  if (!SPORT_URL_MAP[sport]) {
+  if (!SPORT_URL_MAP[sport.toUpperCase()]) {
     return res.sendStatus(404);
   }
 
   res.json({
     date: new Date(),
-    scores: scores[sport] || null,
+    scores: scores[sport.toUpperCase()] || null,
   });
 });
 
