@@ -1,25 +1,24 @@
-export { };
-
 const BASE_URL = "https://www.espn.com";
 
-
-const SPORT_URL_MAP = {
-    mlb: "mlb",
-    nba: "nba",
-    nfl: "nfl",
-    ncaam: "mens-college-basketball",
-    ncaaf: "college-football",
+const SPORTS = {
+  MLB: "MLB",
+  NBA: "NBA",
+  NFL: "NFL",
+  NCAAM: "NCAAM",
+  NCAAF: "NCAAF",
 };
 
-const getSportURL = (sport) => !SPORT_URL_MAP[sport] ? console.error("Sport not found") : `${BASE_URL}/${SPORT_URL_MAP[sport]}/scoreboard`;
+const SPORT_URL_MAP = {
+  [SPORTS.MLB]: "mlb",
+  [SPORTS.NBA]: "nba",
+  [SPORTS.NFL]: "nfl",
+  [SPORTS.NCAAM]: "mens-college-basketball",
+  [SPORTS.NCAAF]: "college-football",
+};
 
-const SPORTS = [
-    "mlb",
-    "nba",
-    "nfl",
-    "ncaam",
-    "ncaaf",
-];
+const getSportURL = (sport: string) =>
+  !SPORT_URL_MAP[sport]
+    ? console.error("Sport not found")
+    : `${BASE_URL}/${SPORT_URL_MAP[sport]}/scoreboard`;
 
-
-module.exports = { SPORTS, SPORT_URL_MAP, getSportURL };
+export { SPORTS, SPORT_URL_MAP, getSportURL };

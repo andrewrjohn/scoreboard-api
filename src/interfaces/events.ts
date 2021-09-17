@@ -1,19 +1,19 @@
-export interface TEvents {
+export interface IEvents {
   date: string;
-  scores: TScore[];
+  scores: IScore[];
 }
 
-export interface TScore {
+export interface IScore {
   startTime: string;
   shortName: string;
-  status: TStatus;
+  status: IStatus;
   teams: {
-    awayTeam: TTeam;
-    homeTeam: TTeam;
+    awayTeam: ITeam;
+    homeTeam: ITeam;
   };
 }
 
-interface TStatus {
+export interface IStatus {
   inning: number;
   state: "pre" | "in" | "post";
   detail: string;
@@ -21,7 +21,7 @@ interface TStatus {
   completed: boolean;
 }
 
-interface TTeam {
+export interface ITeam {
   shortDisplayName: string;
   alternateColor: string;
   color: string;
@@ -32,4 +32,5 @@ interface TTeam {
   abbreviation: string;
   isActive: boolean;
   score: string;
+  homeAway: "home" | "away";
 }

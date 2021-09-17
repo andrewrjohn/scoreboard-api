@@ -1,22 +1,39 @@
-export { };
-const { fetchData } = require("../utils/fetchData");
-const { SPORTS, SPORT_URL_MAP, getSportURL } = require("../constants/sports");
-const express = require("express");
+import express from "express";
+
+import { fetchData } from "../utils/fetchData";
+import { SPORTS, SPORT_URL_MAP, getSportURL } from "../constants/sports";
+import { IScore } from "../interfaces/events";
 
 const router = express.Router();
 
-const scores = {};
+type Scores = {
+  [key: string]: IScore[];
+};
 
-const seconds = (n) => 1000 * n;
+const scores: Scores = {};
 
-function startSchedule() {
-  SPORTS.map(async (sport) => {
+const seconds = (n: number) => 1000 * n;
+
+async function startSchedule() {
+  for (const sport in SPORTS) {
     const url = getSportURL(sport);
-    scores[sport] = await fetchData(url, sport);
-    setInterval(async () => {
-      scores[sport] = await fetchData(url, sport);
-    }, seconds(30));
-  });
+
+    if (url) {
+      const updateSport = async () => {
+        const data = await fetchData(url, sport);
+
+        if (data) {
+          scores[sport] = data;
+        }
+      };
+
+      await updateSport();
+
+      setInterval(async () => {
+        await updateSport();
+      }, seconds(30));
+    }
+  }
 }
 
 startSchedule();
@@ -31,8 +48,8 @@ router.get("/:sport/events", (req, res) => {
 
   res.json({
     date: new Date(),
-    scores: scores[sport] || ""
+    scores: scores[sport] || null,
   });
 });
 
-module.exports = router;
+export default router;
