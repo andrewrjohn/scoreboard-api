@@ -1,28 +1,25 @@
-
 # Scoreboard API
 
 Express.js API that scrapes ESPN for sports scores, written with TypeScript, updated every 30 seconds ⚡️
-
 
 ## Demo
 
 https://scores.weaklytyped.com
 
-  
 ## Features
+
 Currently these are the supported sports:
+
 - MLB
 - NBA
 - NFL
 - NCAAM (top 25 men's college basketball)
 - NCAAF (top 25 men's college football)
 
-  
 ## API Reference
+
 View the [endpoint reference here](https://scores.weaklytyped.com/) to see all available endpoints
 
-
-  
 ## Example
 
 ```javascript
@@ -74,7 +71,6 @@ View the [endpoint reference here](https://scores.weaklytyped.com/) to see all a
 }
 ```
 
-  
 ## Run Locally
 
 Clone the project
@@ -113,22 +109,25 @@ Start the server
   yarn start
 ```
 
-  
 ## Client Wrappers
 
 Use the following libraries if you want an easy way to consume this API in your frontend apps:
 
 - [React Sports Hooks](https://github.com/andrewrjohn/react-sports-hooks)
 
-  
 ## Feedback
 
 If you have any feedback, please [create an issue](https://github.com/andrewrjohn/scoreboard-api/issues/new)
 
+## Uptime Monitoring
+
+Checkout the Weakly Typed status page for realtime uptime monitoring:
+https://stats.uptimerobot.com/6xr1KcPrg8
+
 ## Support this Project
+
 Find yourself using this API, or just think this is cool and want to see continued development of it? Please consider <a href="https://buy.stripe.com/28o2a2fPyens2Qg288" target="_blank">supporting Weakly Typed</a> to help keep this project alive ✊
 
-  
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
