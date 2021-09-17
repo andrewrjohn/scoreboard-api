@@ -1,3 +1,8 @@
 # package directories
 node_modules
-.vscode
+jspm_packages
+public
+
+# Serverless directories
+.serverless
+.now

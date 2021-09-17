@@ -7,7 +7,7 @@ export async function fetchData(
   url: string,
   sport: string
 ): Promise<IScore[] | null> {
-  //   console.log(`[FETCHING] ${sport}...`);
+  console.log(`[FETCHING] ${sport}...`);
   const website = await fetch(url)
     .then((res) => res.text())
     .then((body) => body);
@@ -80,7 +80,7 @@ export async function fetchData(
         },
       ];
     });
-    // console.log(`[UPDATED] ${sport}`);
+    console.log(`[UPDATED] ${sport}`);
     return scores;
   }
 
