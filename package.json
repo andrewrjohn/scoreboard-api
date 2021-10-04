@@ -3,13 +3,6 @@
   "version": "1.0.0",
   "main": "src/index.ts",
   "license": "MIT",
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "express": "^4.17.1",
-    "node-fetch": "^2.6.1",
-    "tailwindcss": "^2.2.15",
-    "ts-node": "^8.3.0"
-  },
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc && yarn tailwind",
@@ -17,6 +10,13 @@
     "start:production": "yarn build && pm2 start dist -n scoreboard-api",
     "tailwind": "tailwindcss -o public/styles/styles.css",
     "tailwind:watch": "tailwindcss -o public/styles/styles.css --watch"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "tailwindcss": "^2.2.15",
+    "ts-node": "^8.3.0"
   },
   "devDependencies": {
     "@types/browser-sync": "^2.26.2",
