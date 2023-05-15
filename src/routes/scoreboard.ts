@@ -2,7 +2,6 @@ import express from "express";
 
 import { fetchData } from "../utils/fetchData";
 import { SPORTS, SPORT_URL_MAP, getSportURL } from "../constants/sports";
-import { IScore } from "../interfaces/events";
 
 const router = express.Router();
 
@@ -39,7 +38,6 @@ async function startSchedule() {
 startSchedule();
 
 router.get("/:sport/events", (req, res) => {
-  startSchedule();
   const { sport } = req.params;
 
   if (!SPORT_URL_MAP[sport.toUpperCase()]) {
