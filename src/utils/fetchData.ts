@@ -1,88 +1,70 @@
 import cheerio from "cheerio";
 import fetch from "node-fetch";
+import fs from "fs";
 
 import { IScore, ITeam } from "../interfaces/events";
 
-export async function fetchData(
-  url: string,
-  sport: string
-): Promise<IScore[] | null> {
+export async function fetchData(url: string, sport: string) {
   //   console.log(`[FETCHING] ${sport}...`);
-  const website = await fetch(url)
-    .then((res) => res.text())
-    .then((body) => body);
+  const res = await fetch(url);
+  const website = await res.text();
 
   const $ = cheerio.load(website);
-  const scripts = await $("script").toArray();
+  const scripts = $("script").toArray();
 
-  const scoreboardScript = scripts.find(
-    (script) =>
-      script.children[0] &&
-      script.children[0].data?.includes("window.espn.scoreboardData")
-  )?.children[0].data;
+  const scoreboardScript = scripts.find((script) =>
+    $(script).text().includes("__espnfitt__")
+  );
 
-  if (scoreboardScript) {
-    const strippedData = scoreboardScript
-      .replace("window.espn.scoreboardData", "")
-      .replace("=", "")
-      .replace(
-        'if(!window.espn_ui.device.isMobile){window.espn.loadType = "ready"};',
-        ""
-      )
-      .replace(/;/g, "")
-      .split("window.espn.scoreboardSettings")[0]
-      .trim();
+  if (!scoreboardScript) return null;
 
-    const data = JSON.parse(strippedData);
+  const scriptContents = $(scoreboardScript).text();
 
-    const { events } = data;
+  const rawData = scriptContents.match(/evts.*crntSzn/);
 
-    let scores: IScore[] = [];
+  if (!rawData) return null;
+  let [dataStr] = rawData;
 
-    events.map((event: any) => {
-      const { competitions, date, shortName, status } = event;
+  dataStr = dataStr.replace(`evts":`, "").replace(`,"crntSzn`, "");
+  const events = JSON.parse(dataStr);
 
-      const home = competitions[0].competitors.find(
-        (team: ITeam) => team.homeAway === "home"
-      );
-      const away = competitions[0].competitors.find(
-        (team: ITeam) => team.homeAway === "away"
-      );
-      delete home.team.links;
-      delete home.team.uid;
-      delete home.team.id;
-      delete away.team.links;
-      delete away.team.uid;
-      delete away.team.id;
+  let scores: {}[] = [];
 
-      scores = [
-        ...scores,
-        {
-          startTime: date,
-          shortName,
-          status: {
-            inning: status.period,
-            state: status.type.state,
-            detail: status.type.detail,
-            shortDetail: status.type.shortDetail,
-            completed: status.type.completed,
-          },
-          teams: {
-            awayTeam: {
-              ...away.team,
-              score: away.score,
-            },
-            homeTeam: {
-              ...home.team,
-              score: home.score,
-            },
-          },
+  events.map((event: any) => {
+    const { competitors, date, shortName, status } = event;
+
+    const home = competitors.find((team: any) => team.isHome);
+    const away = competitors.find((team: any) => !team.isHome);
+    delete home.links;
+    delete home.uid;
+    delete home.id;
+    delete away.links;
+    delete away.uid;
+    delete away.id;
+    delete away.recordSummary;
+    delete away.standingSummary;
+    delete home.recordSummary;
+    delete home.standingSummary;
+
+    scores = [
+      ...scores,
+      {
+        startTime: date,
+        shortName,
+        status: {
+          inning: status.period,
+          state: status.state,
+          detail: status.detail,
+          shortDetail: status.detail,
+          completed: event.completed,
         },
-      ];
-    });
-    // console.log(`[UPDATED] ${sport}`);
-    return scores;
-  }
-
-  return null;
+        teams: {
+          awayTeam: away,
+          homeTeam: home,
+        },
+      },
+    ];
+  });
+  // console.log(`[UPDATED] ${sport}`);
+  return scores;
 }

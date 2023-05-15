@@ -7,7 +7,7 @@ import { IScore } from "../interfaces/events";
 const router = express.Router();
 
 type Scores = {
-  [key: string]: IScore[];
+  [key: string]: {};
 };
 
 const scores: Scores = {};
