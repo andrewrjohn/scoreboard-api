@@ -1,6 +1,6 @@
 # Scoreboard API
 
-Express.js API that scrapes ESPN for sports scores, written with TypeScript, updated every 30 seconds ⚡️
+Express.js API that scrapes ESPN for sports scores and stats, written with TypeScript, updated every 30 seconds ⚡️
 
 ## Demo
 
