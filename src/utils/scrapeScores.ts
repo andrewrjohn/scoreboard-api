@@ -1,32 +1,8 @@
-import cheerio from "cheerio";
-import fetch from "node-fetch";
-import fs from "fs";
+import { getPageData } from "./scrape";
 
-import { IScore, ITeam } from "../interfaces/events";
-
-export async function fetchData(url: string, sport: string) {
-  //   console.log(`[FETCHING] ${sport}...`);
-  const res = await fetch(url);
-  const website = await res.text();
-
-  const $ = cheerio.load(website);
-  const scripts = $("script").toArray();
-
-  const scoreboardScript = scripts.find((script) =>
-    $(script).text().includes("__espnfitt__")
-  );
-
-  if (!scoreboardScript) return null;
-
-  const scriptContents = $(scoreboardScript).text();
-
-  const rawData = scriptContents.match(/evts.*crntSzn/);
-
-  if (!rawData) return null;
-  let [dataStr] = rawData;
-
-  dataStr = dataStr.replace(`evts":`, "").replace(`,"crntSzn`, "");
-  const events = JSON.parse(dataStr);
+export async function scrapeScores(url: string, sport: string) {
+  const events = await getPageData(url, "scoreboard");
+  if (!events) return null;
 
   let scores: {}[] = [];
 

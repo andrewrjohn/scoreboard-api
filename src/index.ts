@@ -2,7 +2,8 @@ import express from "express";
 import path from "path";
 import browserSync from "browser-sync";
 
-import scoreboardRoute from "./routes/scoreboard";
+import eventsRoute from "./routes/events";
+import statsRoute from "./routes/stats";
 import { analytics } from "./utils/analytics";
 
 const app = express();
@@ -10,7 +11,7 @@ const port = process.env.PORT || 4000;
 
 app.use(analytics);
 app.use("/styles", express.static("public/styles"));
-app.use("/api/v1/sports", [scoreboardRoute]);
+app.use("/api/v1/sports", [eventsRoute, statsRoute]);
 
 app.get("/", (_, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));

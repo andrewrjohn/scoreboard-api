@@ -1,7 +1,7 @@
 import express from "express";
 
-import { fetchData } from "../utils/fetchData";
-import { SPORTS, SPORT_URL_MAP, getSportURL } from "../constants/sports";
+import { scrapeScores } from "../utils/scrapeScores";
+import { SPORTS, SPORT_URL_MAP, getScoreboardURL } from "../constants/sports";
 
 const router = express.Router();
 
@@ -15,11 +15,11 @@ const seconds = (n: number) => 1000 * n;
 
 async function startSchedule() {
   for (const sport in SPORTS) {
-    const url = getSportURL(sport);
+    const url = getScoreboardURL(sport);
 
     if (url) {
       const updateSport = async () => {
-        const data = await fetchData(url, sport);
+        const data = await scrapeScores(url, sport);
 
         if (data) {
           scores[sport] = data;

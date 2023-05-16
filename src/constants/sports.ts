@@ -16,9 +16,14 @@ const SPORT_URL_MAP = {
   [SPORTS.NCAAF]: "college-football",
 };
 
-const getSportURL = (sport: string) =>
+const getScoreboardURL = (sport: string) =>
   !SPORT_URL_MAP[sport]
     ? console.error("Sport not found")
     : `${BASE_URL}/${SPORT_URL_MAP[sport]}/scoreboard`;
 
-export { SPORTS, SPORT_URL_MAP, getSportURL };
+const getStatsURL = (sport: string) =>
+  !SPORT_URL_MAP[sport]
+    ? console.error("Sport not found")
+    : `${BASE_URL}/${SPORT_URL_MAP[sport]}/stats`;
+
+export { SPORTS, SPORT_URL_MAP, getScoreboardURL, getStatsURL };
