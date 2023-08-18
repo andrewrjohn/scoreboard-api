@@ -5,8 +5,10 @@ import browserSync from "browser-sync";
 import eventsRoute from "./routes/events";
 import statsRoute from "./routes/stats";
 import { analytics } from "./utils/analytics";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 const port = process.env.PORT || 4000;
 
 app.use(analytics);
