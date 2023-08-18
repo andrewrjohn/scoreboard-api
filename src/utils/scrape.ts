@@ -4,7 +4,12 @@ import fetch from "node-fetch";
 type DataType = "scoreboard" | "stats";
 
 export async function getPageData(url: string, type: DataType) {
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+    },
+  });
   const website = await res.text();
 
   const $ = cheerio.load(website);
@@ -19,7 +24,11 @@ export async function getPageData(url: string, type: DataType) {
   let scriptContent = $(dataScript).text();
   scriptContent = scriptContent
     .replace("window['__espnfitt__']=", "")
+    .replace("window['__CONFIG__']=", "")
     .replace(/;$/gm, "");
+
+  const startSplitIndex = scriptContent.indexOf(`{"app":`);
+  scriptContent = scriptContent.slice(startSplitIndex);
 
   let data = JSON.parse(scriptContent).page.content;
 
