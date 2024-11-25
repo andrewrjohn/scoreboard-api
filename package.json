@@ -17,7 +17,7 @@
     "start": "tsx src/server.ts",
     "build": "npm run tailwind",
     "dev": "NODE_ENV=development concurrently \"npm run tailwind:watch\" \"tsx --watch src/server.ts\"",
-    "deploy": "npm run build && pm2 reload dist -n scoreboard-api",
+    "deploy": "npm run build && pm2 reload pm2.config.js",
     "tailwind": "tailwindcss -o public/styles/styles.css",
     "tailwind:watch": "tailwindcss -o public/styles/styles.css --watch"
   },
