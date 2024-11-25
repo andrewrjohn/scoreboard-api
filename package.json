@@ -16,7 +16,7 @@
     "start": "ts-node src/index.ts",
     "build": "tsc && npm run tailwind",
     "dev": "NODE_ENV=development concurrently \"npm run tailwind:watch\" \"nodemon src/index.ts\"",
-    "start:production": "npm run build && pm2 start dist -n scoreboard-api",
+    "deploy": "npm run build && pm2 start dist -n scoreboard-api",
     "tailwind": "tailwindcss -o public/styles/styles.css",
     "tailwind:watch": "tailwindcss -o public/styles/styles.css --watch"
   },

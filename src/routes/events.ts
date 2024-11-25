@@ -15,22 +15,27 @@ const seconds = (n: number) => 1000 * n;
 
 async function startSchedule() {
   for (const sport in SPORTS) {
-    const url = getScoreboardURL(sport);
+    try {
+      const url = getScoreboardURL(sport);
 
-    if (url) {
-      const updateSport = async () => {
-        const data = await scrapeScores(url, sport);
+      if (url) {
+        const updateSport = async () => {
+          const data = await scrapeScores(url, sport);
 
-        if (data) {
-          scores[sport] = data;
-        }
-      };
+          if (data) {
+            scores[sport] = data;
+          }
+        };
 
-      await updateSport();
-
-      setInterval(async () => {
         await updateSport();
-      }, seconds(30));
+
+        setInterval(async () => {
+          await updateSport();
+        }, seconds(30));
+      }
+    } catch (error) {
+      console.log(`[ERROR] ${sport}`);
+      console.error(error);
     }
   }
 }
