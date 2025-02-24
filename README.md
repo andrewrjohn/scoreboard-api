@@ -115,9 +115,10 @@ Use the following libraries if you want an easy way to consume this API in your 
 
 - [React Sports Hooks](https://github.com/andrewrjohn/react-sports-hooks)
 
-## Feedback
+## Support
+[Join the community](https://community.weaklytyped.com/) to ask questions and get support.
 
-If you have any feedback, please [create an issue](https://github.com/andrewrjohn/scoreboard-api/issues/new)
+
 
 ## Uptime Monitoring
 
