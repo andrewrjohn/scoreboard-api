@@ -7,6 +7,7 @@ import eventsRoute from "./routes/events";
 import statsRoute from "./routes/stats";
 import cors from "cors";
 import { PostHog } from "posthog-node";
+import { createProxyMiddleware } from "http-proxy-middleware";
 
 let phClient: PostHog | null = null;
 
@@ -21,23 +22,34 @@ app.use(cors());
 const port = process.env.PORT || 4000;
 
 if (process.env.NODE_ENV === "production") {
-  app.use((req, res, next) => {
-    // const rapidApiProxySecret = req.headers[
-    //   "X-RapidAPI-Proxy-Secret"
-    // ] as string;
+  // app.use((req, res, next) => {
+  //   // const rapidApiProxySecret = req.headers[
+  //   //   "X-RapidAPI-Proxy-Secret"
+  //   // ] as string;
 
-    // if (rapidApiProxySecret !== process.env.RAPID_API_PROXY_SECRET) {
-    //   return res.status(401).json({
-    //     error: "Unauthorized",
-    //     message: "Missing RapidAPI proxy secret",
-    //   });
-    // }
-    // fix redirect loop
+  //   // if (rapidApiProxySecret !== process.env.RAPID_API_PROXY_SECRET) {
+  //   //   return res.status(401).json({
+  //   //     error: "Unauthorized",
+  //   //     message: "Missing RapidAPI proxy secret",
+  //   //   });
+  //   // }
+  //   // fix redirect loop
 
-    res.redirect(301, `https://scoreboard4.p.rapidapi.com${req.originalUrl}`);
+  //   res.redirect(301, `https://scoreboard4.p.rapidapi.com${req.originalUrl}`);
 
-    next();
-  });
+  //   next();
+  // });
+
+  app.use(
+    "*",
+    createProxyMiddleware({
+      target: "https://scoreboard4.p.rapidapi.com",
+      changeOrigin: true,
+      pathRewrite: {
+        "^/": "/", // Keep the path as-is
+      },
+    })
+  );
 }
 
 app.use((req, res, next) => {
