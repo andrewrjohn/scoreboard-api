@@ -32,12 +32,9 @@ if (process.env.NODE_ENV === "production") {
     //     message: "Missing RapidAPI proxy secret",
     //   });
     // }
+    // fix redirect loop
 
-    if (req.hostname.includes("scores.weaklytyped.com")) {
-      res.redirect(
-        `https://scoreboard4.p.rapidapi.com${req.originalUrl}?${req.query}`
-      );
-    }
+    res.redirect(301, `https://scoreboard4.p.rapidapi.com${req.originalUrl}`);
 
     next();
   });
