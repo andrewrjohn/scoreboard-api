@@ -33,6 +33,10 @@ if (process.env.NODE_ENV === "production") {
       });
     }
 
+    res.redirect(
+      `https://scoreboard4.p.rapidapi.com${req.originalUrl}?${req.query}`
+    );
+
     next();
   });
 }
