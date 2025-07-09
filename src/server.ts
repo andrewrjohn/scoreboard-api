@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import path from "path";
 import browserSync from "browser-sync";
@@ -6,12 +7,47 @@ import eventsRoute from "./routes/events";
 import statsRoute from "./routes/stats";
 import { analytics } from "./utils/analytics";
 import cors from "cors";
+import { PostHog } from "posthog-node";
+
+let phClient: PostHog | null = null;
+
+if (process.env.POSTHOG_API_KEY) {
+  phClient = new PostHog(process.env.POSTHOG_API_KEY, {
+    host: "https://us.i.posthog.com",
+  });
+}
 
 const app = express();
 app.use(cors());
 const port = process.env.PORT || 4000;
 
-app.use(analytics);
+app.use((req, res, next) => {
+  try {
+    if (phClient) {
+      const xForwardedFor = req.headers["x-forwarded-for"];
+
+      const distinctId = xForwardedFor
+        ? Array.isArray(xForwardedFor)
+          ? xForwardedFor[0]
+          : xForwardedFor
+        : req.ip;
+      phClient.capture({
+        distinctId,
+        event: "$pageview",
+        properties: {
+          url: req.originalUrl,
+          path: req.path,
+          domain: "scores.weaklytyped.com",
+        },
+      });
+    }
+  } catch (err) {
+    console.error("Error tracking analytics");
+    console.error(err);
+  } finally {
+    next();
+  }
+});
 app.use("/styles", express.static("public/styles"));
 app.use("/api/v1/sports", [eventsRoute, statsRoute]);
 
