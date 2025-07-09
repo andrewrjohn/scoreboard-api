@@ -33,9 +33,11 @@ if (process.env.NODE_ENV === "production") {
     //   });
     // }
 
-    res.redirect(
-      `https://scoreboard4.p.rapidapi.com${req.originalUrl}?${req.query}`
-    );
+    if (req.hostname.includes("scores.weaklytyped.com")) {
+      res.redirect(
+        `https://scoreboard4.p.rapidapi.com${req.originalUrl}?${req.query}`
+      );
+    }
 
     next();
   });
