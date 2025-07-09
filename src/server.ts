@@ -5,7 +5,6 @@ import browserSync from "browser-sync";
 
 import eventsRoute from "./routes/events";
 import statsRoute from "./routes/stats";
-import { analytics } from "./utils/analytics";
 import cors from "cors";
 import { PostHog } from "posthog-node";
 
@@ -21,10 +20,28 @@ const app = express();
 app.use(cors());
 const port = process.env.PORT || 4000;
 
+if (process.env.NODE_ENV === "production") {
+  app.use((req, res, next) => {
+    const rapidApiProxySecret = req.headers[
+      "X-RapidAPI-Proxy-Secret"
+    ] as string;
+
+    if (rapidApiProxySecret !== process.env.RAPID_API_PROXY_SECRET) {
+      return res.status(401).json({
+        error: "Unauthorized",
+        message: "Missing RapidAPI proxy secret",
+      });
+    }
+
+    next();
+  });
+}
+
 app.use((req, res, next) => {
   try {
     if (phClient) {
-      const xForwardedFor = req.headers["x-forwarded-for"];
+      const xForwardedFor =
+        req.headers["x-forwarded-for"] || req.headers["X-Forwarded-For"];
 
       const distinctId = xForwardedFor
         ? Array.isArray(xForwardedFor)
@@ -36,6 +53,7 @@ app.use((req, res, next) => {
         event: "$pageview",
         properties: {
           url: req.originalUrl,
+          $current_url: req.originalUrl,
           path: req.path,
           domain: "scores.weaklytyped.com",
         },
