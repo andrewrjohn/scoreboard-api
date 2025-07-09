@@ -22,16 +22,16 @@ const port = process.env.PORT || 4000;
 
 if (process.env.NODE_ENV === "production") {
   app.use((req, res, next) => {
-    const rapidApiProxySecret = req.headers[
-      "X-RapidAPI-Proxy-Secret"
-    ] as string;
+    // const rapidApiProxySecret = req.headers[
+    //   "X-RapidAPI-Proxy-Secret"
+    // ] as string;
 
-    if (rapidApiProxySecret !== process.env.RAPID_API_PROXY_SECRET) {
-      return res.status(401).json({
-        error: "Unauthorized",
-        message: "Missing RapidAPI proxy secret",
-      });
-    }
+    // if (rapidApiProxySecret !== process.env.RAPID_API_PROXY_SECRET) {
+    //   return res.status(401).json({
+    //     error: "Unauthorized",
+    //     message: "Missing RapidAPI proxy secret",
+    //   });
+    // }
 
     res.redirect(
       `https://scoreboard4.p.rapidapi.com${req.originalUrl}?${req.query}`
