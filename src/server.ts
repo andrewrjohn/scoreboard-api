@@ -1,5 +1,5 @@
 import "dotenv/config";
-import express from "express";
+import express, { Router } from "express";
 import path from "path";
 import browserSync from "browser-sync";
 import eventsRoute from "./routes/events";
@@ -19,8 +19,41 @@ const app = express();
 app.use(cors());
 const port = process.env.PORT || 4000;
 
+// app.use((req, res, next) => {
+//   try {
+//     if (phClient) {
+//       const xForwardedFor =
+//         req.headers["x-forwarded-for"] || req.headers["X-Forwarded-For"];
+
+//       const distinctId = xForwardedFor
+//         ? Array.isArray(xForwardedFor)
+//           ? xForwardedFor[0]
+//           : xForwardedFor
+//         : req.ip;
+//       phClient.capture({
+//         distinctId,
+//         event: "$pageview",
+//         properties: {
+//           url: req.originalUrl,
+//           $current_url: req.originalUrl,
+//           path: req.path,
+//           domain: "scores.weaklytyped.com",
+//         },
+//       });
+//     }
+//   } catch (err) {
+//     console.error("Error tracking analytics");
+//     console.error(err);
+//   } finally {
+//     next();
+//   }
+// });
+app.use("/styles", express.static("public/styles"));
+const apiRouter = Router();
+apiRouter.use("/v1/sports", [eventsRoute, statsRoute]);
+
 if (process.env.NODE_ENV === "production") {
-  app.use((req, res, next) => {
+  apiRouter.use((req, res, next) => {
     const rapidApiProxySecret = req.headers[
       "x-rapidapi-proxy-secret"
     ] as string;
@@ -37,37 +70,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.use((req, res, next) => {
-  try {
-    if (phClient) {
-      const xForwardedFor =
-        req.headers["x-forwarded-for"] || req.headers["X-Forwarded-For"];
-
-      const distinctId = xForwardedFor
-        ? Array.isArray(xForwardedFor)
-          ? xForwardedFor[0]
-          : xForwardedFor
-        : req.ip;
-      phClient.capture({
-        distinctId,
-        event: "$pageview",
-        properties: {
-          url: req.originalUrl,
-          $current_url: req.originalUrl,
-          path: req.path,
-          domain: "scores.weaklytyped.com",
-        },
-      });
-    }
-  } catch (err) {
-    console.error("Error tracking analytics");
-    console.error(err);
-  } finally {
-    next();
-  }
-});
-app.use("/styles", express.static("public/styles"));
-app.use("/api/v1/sports", [eventsRoute, statsRoute]);
+app.use("/api", apiRouter);
 
 app.get("/", (_, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
