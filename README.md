@@ -18,7 +18,7 @@ Currently these are the supported sports:
 
 ## API Reference
 
-View the [endpoint reference here](https://scores.weaklytyped.com/) to see all available endpoints
+View the [endpoint reference here](https://sports.weaklytyped.com/) to see all available endpoints
 
 ## Example
 
@@ -115,9 +115,10 @@ Use the following libraries if you want an easy way to consume this API in your 
 
 - [React Sports Hooks](https://github.com/andrewrjohn/react-sports-hooks)
 
-## Feedback
+## Support
+[Join the community](https://community.weaklytyped.com/) to ask questions and get support.
 
-If you have any feedback, please [create an issue](https://github.com/andrewrjohn/scoreboard-api/issues/new)
+
 
 ## Uptime Monitoring
 
