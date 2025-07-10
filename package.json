@@ -20,7 +20,7 @@
     "posthog-node": "^5.3.1",
     "tailwindcss": "^3.3.2",
     "ts-node": "^10.9.1",
-    "tsx": "^4.19.2"
+    "tsx": "^4.20.3"
   },
   "devDependencies": {
     "@types/browser-sync": "^2.26.2",
