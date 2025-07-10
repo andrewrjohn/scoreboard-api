@@ -6,6 +6,7 @@ const SPORTS = {
   NFL: "NFL",
   NCAAM: "NCAAM",
   NCAAF: "NCAAF",
+  NHL: "NHL",
 };
 
 const SPORT_URL_MAP = {
@@ -14,6 +15,7 @@ const SPORT_URL_MAP = {
   [SPORTS.NFL]: "nfl",
   [SPORTS.NCAAM]: "mens-college-basketball",
   [SPORTS.NCAAF]: "college-football",
+  [SPORTS.NHL]: "nhl",
 };
 
 const getScoreboardURL = (sport: string) =>

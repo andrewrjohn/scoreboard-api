@@ -7,7 +7,7 @@ export async function scrapeScores(url: string, sport: string) {
   let scores: {}[] = [];
 
   events.map((event: any) => {
-    const { competitors, date, shortName, status } = event;
+    const { competitors, date, shortName, status, vnue } = event;
 
     const home = competitors.find((team: any) => team.isHome);
     const away = competitors.find((team: any) => !team.isHome);
@@ -38,6 +38,7 @@ export async function scrapeScores(url: string, sport: string) {
           awayTeam: away,
           homeTeam: home,
         },
+        venue: vnue,
       },
     ];
   });

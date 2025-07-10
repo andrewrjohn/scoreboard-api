@@ -5,159 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scoreboard API - Endpoint Reference</title>
     <link rel="stylesheet" href="./styles/styles.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
   </head>
-  <body class="text-gray-900">
+  <body class="text-gray-900 w-full max-w-screen-md mx-auto">
     <h1 class="text-center my-8 text-4xl font-bold">
       Scoreboard API - Endpoint Reference
     </h1>
-    <table class="mx-auto table">
+    <!-- Callout for new API URL change and required api token -->
+    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 mb-4">
+      <p class="font-bold">Important Notice:</p>
+      <p>
+        The API URL has changed, please use the new URL:
+
+        <br />
+        <br />
+        <a href="https://sports.weaklytyped.com" class="underline"
+          >https://sports.weaklytyped.com</a
+        >
+
+        <br />
+        <br />
+      </p>
+      <p>
+        An API key is now also required and can be obtained
+        <a
+          href="https://rapidapi.com/johnsonrobertandrew-KXmcdI0G1H_/api/scoreboard4"
+          class="underline"
+          >here</a
+        >.
+      </p>
+    </div>
+    <table class="mx-auto w-full mt-10 table">
       <thead class="text-left">
         <tr>
-          <th class="pr-10">Method</th>
+          <!-- <th class="pr-10">Method</th> -->
           <th class="pr-10">Sport</th>
           <th class="pr-10">Endpoint</th>
           <th class="pr-10">Notes</th>
         </tr>
       </thead>
-      <tbody>
-        <tr class="h-10">
-          <td>
-            <span class="text-sm bg-blue-400 text-white rounded-2xl px-2 py-1"
-              >GET</span
-            >
-          </td>
-          <td class="">MLB</td>
-          <td>
-            <a class="underline" href="/api/v1/sports/mlb/events">/events</a>
-          </td>
-          <td></td>
-        </tr>
-        <tr class="h-10">
-          <td>
-            <span class="text-sm bg-blue-400 text-white rounded-2xl px-2 py-1"
-              >GET</span
-            >
-          </td>
-          <td class="">MLB</td>
-          <td>
-            <a class="underline" href="/api/v1/sports/mlb/stats">/stats</a>
-          </td>
-          <td></td>
-        </tr>
-        <tr class="h-10">
-          <td>
-            <span class="text-sm bg-blue-400 text-white rounded-2xl px-2 py-1"
-              >GET</span
-            >
-          </td>
-          <td class="">NFL</td>
-          <td>
-            <a class="underline pr-10" href="/api/v1/sports/nfl/events"
-              >/events</a
-            >
-          </td>
-          <td></td>
-        </tr>
-        <tr class="h-10">
-          <td>
-            <span class="text-sm bg-blue-400 text-white rounded-2xl px-2 py-1"
-              >GET</span
-            >
-          </td>
-          <td class="">NFL</td>
-          <td>
-            <a class="underline pr-10" href="/api/v1/sports/nfl/stats"
-              >/stats</a
-            >
-          </td>
-          <td></td>
-        </tr>
-        <tr class="h-10">
-          <td>
-            <span class="text-sm bg-blue-400 text-white rounded-2xl px-2 py-1"
-              >GET</span
-            >
-          </td>
-          <td class="">NBA</td>
-          <td>
-            <a
-              class="text-dark pr-10 underline"
-              href="/api/v1/sports/nba/events"
-              >/events</a
-            >
-          </td>
-          <td></td>
-        </tr>
-        <tr class="h-10">
-          <td>
-            <span class="text-sm bg-blue-400 text-white rounded-2xl px-2 py-1"
-              >GET</span
-            >
-          </td>
-          <td class="">NBA</td>
-          <td>
-            <a class="text-dark pr-10 underline" href="/api/v1/sports/nba/stats"
-              >/stats</a
-            >
-          </td>
-          <td></td>
-        </tr>
-        <tr class="h-10">
-          <td>
-            <span class="text-sm bg-blue-400 text-white rounded-2xl px-2 py-1"
-              >GET</span
-            >
-          </td>
-          <td class="">NCAAM</td>
-          <td>
-            <a class="pr-10 underline" href="/api/v1/sports/ncaam/events"
-              >/events</a
-            >
-          </td>
-          <td>Men's college basketball, top 25 teams only.</td>
-        </tr>
-        <tr class="h-10">
-          <td>
-            <span class="text-sm bg-blue-400 text-white rounded-2xl px-2 py-1"
-              >GET</span
-            >
-          </td>
-          <td class="">NCAAM</td>
-          <td>
-            <a class="pr-10 underline" href="/api/v1/sports/ncaam/stats"
-              >/stats</a
-            >
-          </td>
-          <td>Men's college basketball, top 25 teams only.</td>
-        </tr>
-        <tr class="h-10">
-          <td>
-            <span class="text-sm bg-blue-400 text-white rounded-2xl px-2 py-1"
-              >GET</span
-            >
-          </td>
-          <td class="">NCAAF</td>
-          <td>
-            <a class="underline pr-10" href="/api/v1/sports/ncaaf/events"
-              ><u>/events</u></a
-            >
-          </td>
-          <td>Men's college football, top 25 teams only.</td>
-        </tr>
-        <tr class="h-10">
-          <td>
-            <span class="text-sm bg-blue-400 text-white rounded-2xl px-2 py-1"
-              >GET</span
-            >
-          </td>
-          <td class="">NCAAF</td>
-          <td>
-            <a class="underline pr-10" href="/api/v1/sports/ncaaf/stats"
-              ><u>/stats</u></a
-            >
-          </td>
-          <td>Men's college football, top 25 teams only.</td>
-        </tr>
+      <tbody x-data="data">
+        <template x-for="endpoint in endpoints">
+          <tr class="h-10">
+            <!-- <td>
+              <span class="text-sm bg-blue-400 text-white rounded-2xl px-2 py-1"
+                >GET</span
+              >
+            </td> -->
+            <td x-text="endpoint.sport"></td>
+            <td>
+              <a
+                class="underline"
+                :href="endpoint.url"
+                x-text="endpoint.endpoint"
+              ></a>
+            </td>
+            <td x-text="endpoint.notes" class="pl-4"></td>
+          </tr>
+        </template>
       </tbody>
     </table>
     <div class="mx-auto w-8 h-8 mt-8">
@@ -170,5 +78,104 @@
         />
       </a>
     </div>
+
+    <script>
+      document.addEventListener("alpine:init", () => {
+        const endpoints = [
+          {
+            method: "GET",
+            sport: "NFL",
+            url: "https://sports.weaklytyped.com/api/v1/sports/nfl/events",
+            endpoint: "/api/v1/sports/nfl/events",
+          },
+          {
+            method: "GET",
+            sport: "NFL",
+            url: "https://sports.weaklytyped.com/api/v1/sports/nfl/stats",
+            endpoint: "/api/v1/sports/nfl/stats",
+          },
+          {
+            method: "GET",
+            sport: "NBA",
+            url: "https://sports.weaklytyped.com/api/v1/sports/nba/events",
+            endpoint: "/api/v1/sports/nba/events",
+          },
+          {
+            method: "GET",
+            sport: "NBA",
+            url: "https://sports.weaklytyped.com/api/v1/sports/nba/stats",
+            endpoint: "/api/v1/sports/nba/stats",
+          },
+          {
+            method: "GET",
+            sport: "MLB",
+            url: "https://sports.weaklytyped.com/api/v1/sports/mlb/events",
+            endpoint: "/api/v1/sports/mlb/events",
+          },
+          {
+            method: "GET",
+            sport: "MLB",
+            url: "https://sports.weaklytyped.com/api/v1/sports/mlb/stats",
+            endpoint: "/api/v1/sports/mlb/stats",
+          },
+          {
+            method: "GET",
+            sport: "MLB",
+            url: "https://sports.weaklytyped.com/api/v1/sports/mlb/events",
+            endpoint: "/api/v1/sports/mlb/events",
+          },
+          {
+            method: "GET",
+            sport: "MLB",
+            url: "https://sports.weaklytyped.com/api/v1/sports/mlb/stats",
+            endpoint: "/api/v1/sports/mlb/stats",
+          },
+          {
+            method: "GET",
+            sport: "NHL",
+            url: "https://sports.weaklytyped.com/api/v1/sports/nhl/events",
+            endpoint: "/api/v1/sports/nhl/events",
+          },
+          {
+            method: "GET",
+            sport: "NHL",
+            url: "https://sports.weaklytyped.com/api/v1/sports/nhl/stats",
+            endpoint: "/api/v1/sports/nhl/stats",
+          },
+          {
+            method: "GET",
+            sport: "NCAAM",
+            url: "https://sports.weaklytyped.com/api/v1/sports/ncaam/events",
+            endpoint: "/api/v1/sports/ncaam/events",
+            notes: "Men's college basketball, top 25 teams only.",
+          },
+          {
+            method: "GET",
+            sport: "NCAAM",
+            url: "https://sports.weaklytyped.com/api/v1/sports/ncaam/stats",
+            endpoint: "/api/v1/sports/ncaam/stats",
+            notes: "Men's college basketball, top 25 teams only.",
+          },
+          {
+            method: "GET",
+            sport: "NCAAF",
+            url: "https://sports.weaklytyped.com/api/v1/sports/ncaaf/events",
+            endpoint: "/api/v1/sports/ncaaf/events",
+            notes: "Men's college football, top 25 teams only.",
+          },
+          {
+            method: "GET",
+            sport: "NCAAF",
+            url: "https://sports.weaklytyped.com/api/v1/sports/ncaaf/stats",
+            endpoint: "/api/v1/sports/ncaaf/stats",
+            notes: "Men's college football, top 25 teams only.",
+          },
+        ];
+
+        Alpine.data("data", () => ({
+          endpoints,
+        }));
+      });
+    </script>
   </body>
 </html>
