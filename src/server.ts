@@ -50,7 +50,6 @@ const port = process.env.PORT || 4000;
 // });
 app.use("/styles", express.static("public/styles"));
 const apiRouter = Router();
-apiRouter.use("/v1/sports", [eventsRoute, statsRoute]);
 
 if (process.env.NODE_ENV === "production") {
   apiRouter.use((req, res, next) => {
@@ -69,6 +68,8 @@ if (process.env.NODE_ENV === "production") {
     next();
   });
 }
+
+apiRouter.use("/v1/sports", [eventsRoute, statsRoute]);
 
 app.use("/api", apiRouter);
 
