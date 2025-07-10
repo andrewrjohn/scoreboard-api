@@ -532,16 +532,16 @@ video {
   margin-bottom: 2rem;
 }
 
-.mt-8 {
-  margin-top: 2rem;
-}
-
 .mb-4 {
   margin-bottom: 1rem;
 }
 
 .mt-10 {
   margin-top: 2.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .table {
