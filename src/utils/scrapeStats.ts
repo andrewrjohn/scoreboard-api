@@ -4,7 +4,5 @@ export async function scrapeStats(url: string) {
   const stats = await getPageData(url, "stats");
   if (!stats) return null;
 
-  const [offense, defense] = stats;
-
-  return { offense, defense };
+  return stats;
 }
