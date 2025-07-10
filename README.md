@@ -18,7 +18,7 @@ Currently these are the supported sports:
 
 ## API Reference
 
-View the [endpoint reference here](https://scores.weaklytyped.com/) to see all available endpoints
+View the [endpoint reference here](https://sports.weaklytyped.com/) to see all available endpoints
 
 ## Example
 
