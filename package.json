@@ -14,7 +14,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
-    "express": "^5.1.0",
+    "express": "^5.2.0",
     "node-fetch": "^3.3.2",
     "pm2": "^6.0.8",
     "tailwindcss": "^3.3.2",
